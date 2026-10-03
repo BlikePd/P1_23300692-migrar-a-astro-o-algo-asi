@@ -2,7 +2,7 @@ import { ApolloClient, HttpLink, InMemoryCache, gql } from "@apollo/client"
 import { useAuthStore } from "../store/authStore"
 
 const httpLink = new HttpLink({
-  uri: import.meta.env.VITE_GRAPHQL_URL || "http://localhost:4000/",
+  uri: import.meta.env.VITE_GRAPHQL_URL || "https://p1-23300692-migrar-a-astro-o-algo-asi.onrender.com/",
 
   fetch: (uri, options = {}) => {
     const token = useAuthStore.getState().token
