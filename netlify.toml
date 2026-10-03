@@ -1,0 +1,17 @@
+[build]
+  base = "front-astro"
+  command = "npm --prefix ../back install && npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+  VITE_GRAPHQL_URL = "/graphql"
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+[dev]
+  command = "npm run dev"
+  targetPort = 4321
+  framework = "#custom"
