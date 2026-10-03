@@ -1,0 +1,54 @@
+/*
+  Orden de capas: tu CSS actual (legacy) tiene la prioridad MÁS BAJA,
+  así que no pisa a los componentes de beUI. Tailwind se importa sin
+  "preflight" para no alterar el resto de tu página.
+*/
+@layer legacy, theme, base, components, utilities;
+
+@import "./styles.css" layer(legacy);
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+
+/* Tokens que usan los componentes de beUI/shadcn, con la paleta de Quest Merchant */
+:root {
+  --background: #0d1210;
+  --foreground: #ece8dc;
+  --card: #151c18;
+  --muted: #1a231e;
+  --muted-foreground: #9aa69f;
+  --border: #2c3932;
+  --primary: #c8a96a;
+  --destructive: #d9726b;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-primary: var(--primary);
+  --color-destructive: var(--destructive);
+}
+
+/* Mini-reset SOLO para los avisos (equivale al preflight, pero acotado) */
+@layer base {
+  .toast-reset,
+  .toast-reset * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0 solid var(--border);
+  }
+  ol.toast-reset {
+    list-style: none;
+  }
+  .toast-reset button {
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    transform: none;
+    cursor: pointer;
+  }
+}
