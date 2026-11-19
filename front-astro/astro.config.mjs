@@ -1,15 +1,13 @@
 // @ts-check
 import { defineConfig } from "astro/config"
 import react from "@astrojs/react"
-
-import netlify from "@astrojs/netlify";
-
-import tailwindcss from "@tailwindcss/vite";
-
-import AstroPWA from "@vite-pwa/astro";
+import vercel from "@astrojs/vercel"
+import tailwindcss from "@tailwindcss/vite"
+import AstroPWA from "@vite-pwa/astro"
 
 export default defineConfig({
   output: "server",
+  adapter: vercel(),
   integrations: [
     react(),
     AstroPWA({
@@ -44,14 +42,6 @@ export default defineConfig({
       devOptions: { enabled: true, navigateFallbackAllowlist: [/^\//] }
     })
   ],
-  adapter: netlify({
-  devFeatures: {
-    environmentVariables: false,
-    images: true,
-    edgeFunctions: false
-  }
-}),
-
   vite: {
     plugins: [tailwindcss()]
   }
