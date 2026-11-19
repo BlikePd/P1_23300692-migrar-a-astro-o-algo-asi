@@ -1,0 +1,8 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro"
+import Checkout from "../views/client/Checkout.jsx"
+---
+
+<BaseLayout title="Checkout">
+  <Checkout client:only="react" />
+</BaseLayout>

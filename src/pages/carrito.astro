@@ -1,0 +1,8 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro"
+import Cart from "../views/client/Cart.jsx"
+---
+
+<BaseLayout title="Carrito">
+  <Cart client:only="react" />
+</BaseLayout>

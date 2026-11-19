@@ -1,0 +1,12 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro"
+import ProductDetail from "../../views/client/ProductDetail.jsx"
+
+export const prerender = false
+
+const { id } = Astro.params
+---
+
+<BaseLayout title="Producto">
+  <ProductDetail id={id} client:only="react" />
+</BaseLayout>

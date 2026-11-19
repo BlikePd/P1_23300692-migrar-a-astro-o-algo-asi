@@ -1,0 +1,8 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro"
+import Orders from "../views/client/Orders.jsx"
+---
+
+<BaseLayout title="Mis pedidos">
+  <Orders client:only="react" />
+</BaseLayout>

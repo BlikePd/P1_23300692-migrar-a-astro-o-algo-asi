@@ -1,0 +1,49 @@
+
+---
+import "../styles/global.css"
+import "../styles/styles.css"
+import { pwaInfo } from "virtual:pwa-info"
+import InstallPWA from "../components/InstallPWA.jsx"
+
+const {
+  title = "Quest Merchant | Tienda de juegos de rol",
+  description = "Descubre manuales, dados, miniaturas y accesorios para tus aventuras de rol en Quest Merchant.",
+  noReferrer = false
+} = Astro.props
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+
+    <title>{title}</title>
+
+    <!-- SEO: descripción de la página -->
+    <meta name="description" content={description} />
+
+    <!-- PWA: manifiesto, color de barra e icono iOS -->
+    <meta name="theme-color" content="#7389c3" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    {pwaInfo && <Fragment set:html={pwaInfo.webManifest.linkTag} />}
+
+    <!-- Política de referencia -->
+    {noReferrer && (
+      <meta name="referrer" content="no-referrer" />
+    )}
+  </head>
+
+  <body>
+    <slot />
+    <InstallPWA client:only="react" />
+
+    <script>
+      import { registerSW } from "virtual:pwa-register"
+      registerSW({ immediate: true })
+    </script>
+  </body>
+</html>

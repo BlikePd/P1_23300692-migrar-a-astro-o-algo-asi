@@ -1,0 +1,8 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro"
+import Favorites from "../views/client/Favorites.jsx"
+---
+
+<BaseLayout title="Me gusta | Quest Merchant">
+  <Favorites client:only="react" />
+</BaseLayout>

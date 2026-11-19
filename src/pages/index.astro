@@ -1,0 +1,8 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro"
+import Home from "../views/client/Home.jsx"
+---
+
+<BaseLayout title="Quest Merchant | Tienda de juegos de rol">
+  <Home client:only="react" />
+</BaseLayout>

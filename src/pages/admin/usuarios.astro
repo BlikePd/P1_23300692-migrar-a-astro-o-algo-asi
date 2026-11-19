@@ -1,0 +1,8 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro"
+import AdminPage from "../../components/AdminPage.jsx"
+---
+
+<BaseLayout title="usuarios">
+  <AdminPage page="usuarios" client:only="react" />
+</BaseLayout>
